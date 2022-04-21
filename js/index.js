@@ -24,14 +24,26 @@ function calculateAll() {
   document.querySelector("#total-value span").innerText =  subtotal
  
   // end of test
+  //added here because it only iterated once in the window load.
+  const btn = Array.from(document.querySelectorAll(".btn-remove"))
+  for (let i=0; i<btn.length;i++){
+   btn[i].addEventListener("click", removeProduct)
+ }
 }
 
 // ITERATION 4
 
 function removeProduct(event) {
   const target = event.currentTarget;
+  console.log("button was clicked")
   target.parentElement.parentElement.parentElement.removeChild(target.parentElement.parentElement);
   calculateAll()
+
+  //added here because it only iterated once in the window load.
+  const btn = Array.from(document.querySelectorAll(".btn-remove"))
+  for (let i=0; i<btn.length;i++){
+   btn[i].addEventListener("click", removeProduct)
+ }
 }
 
 // ITERATION 5
@@ -97,17 +109,32 @@ function createProduct() {
  
   productName.value=""
   productQuant.value=""
+  
+  productName.style.borderColor = "#dadada"
+  productQuant.style.borderColor = "#dadada"
+
   } else {
     productName.style.borderColor = "red"
     productQuant.style.borderColor = "red"
   }
+  //added here because it only iterated once in the window load.
+  const btn = Array.from(document.querySelectorAll(".btn-remove"))
+  for (let i=0; i<btn.length;i++){
+   btn[i].addEventListener("click", removeProduct)
+ }
 }
 
 window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
-  Array.from(document.getElementsByClassName("btn-remove")).forEach(button=>{
-    button.addEventListener('click', removeProduct)
-  })
+ 
+//  Array.from(document.querySelectorAll(".btn-remove")).forEach(button=>{
+//     button.addEventListener('click', removeProduct)
+//   })
+const btn = Array.from(document.querySelectorAll(".btn-remove"))
+ for (let i=0; i<btn.length;i++){
+   btn[i].addEventListener("click", removeProduct)
+ }
   document.getElementById("create").addEventListener('click', createProduct)
   });
+
