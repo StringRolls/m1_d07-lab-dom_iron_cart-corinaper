@@ -14,8 +14,7 @@ function calculateAll() {
   // it runs when only iteration 1 is completed. at later point, it can be removed.
   let subtotal = 0
   const singleProduct = Array.from(document.getElementsByClassName("product"));
-  // Array.from(singleProduct).forEach(product=>{
-    //  subtotal+=
+  
    singleProduct.forEach(prod=>{
       updateSubtotal(prod);
       subtotal +=updateSubtotal(prod)
@@ -24,11 +23,7 @@ function calculateAll() {
   document.querySelector("#total-value span").innerText =  subtotal
  
   // end of test
-  //added here because it only iterated once in the window load.
-  const btn = Array.from(document.querySelectorAll(".btn-remove"))
-  for (let i=0; i<btn.length;i++){
-   btn[i].addEventListener("click", removeProduct)
- }
+  
 }
 
 // ITERATION 4
@@ -39,11 +34,7 @@ function removeProduct(event) {
   target.parentElement.parentElement.parentElement.removeChild(target.parentElement.parentElement);
   calculateAll()
 
-  //added here because it only iterated once in the window load.
-  const btn = Array.from(document.querySelectorAll(".btn-remove"))
-  for (let i=0; i<btn.length;i++){
-   btn[i].addEventListener("click", removeProduct)
- }
+  
 }
 
 // ITERATION 5
@@ -106,6 +97,7 @@ function createProduct() {
   newButton.classList.add("btn-remove")
   newTD4.appendChild(newButton)
   newButton.innerText = "Remove"
+  newButton.addEventListener("click", removeProduct)
  
   productName.value=""
   productQuant.value=""
@@ -117,11 +109,7 @@ function createProduct() {
     productName.style.borderColor = "red"
     productQuant.style.borderColor = "red"
   }
-  //added here because it only iterated once in the window load.
-  const btn = Array.from(document.querySelectorAll(".btn-remove"))
-  for (let i=0; i<btn.length;i++){
-   btn[i].addEventListener("click", removeProduct)
- }
+  
 }
 
 window.addEventListener('load', () => {
